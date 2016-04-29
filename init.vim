@@ -8,14 +8,21 @@ call plug#begin('~/.config/nvim/plugged')
   "  YouCompleteMe
   Plug 'Valloric/YouCompleteMe'
 
+  " Comments
+  Plug 'https://github.com/scrooloose/nerdcommenter.git'
+  " Pair parenthesis
+  Plug 'https://github.com/tpope/vim-unimpaired.git'
+  Plug 'https://github.com/jiangmiao/auto-pairs.git'
+
   " Interface
   " ---
   " airline is a better status line and a tab-bar for nvim.
-  Plug 'bling/vim-airline'
+  Plug 'bling/vim-airline', 'v0.8'
   Plug 'vim-airline/vim-airline-themes'
   " colorschemes
   Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
   Plug 'https://github.com/freeo/vim-kalisi.git'
+  Plug 'https://github.com/easysid/mod8.vim.git'
   " fugitive
   Plug 'https://github.com/tpope/vim-fugitive.git'
   " nerdtree
@@ -23,6 +30,10 @@ call plug#begin('~/.config/nvim/plugged')
 
   " File Type
   " ---
+  " JavaScript  
+  Plug 'pangloss/vim-javascript'
+  Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
+
   "  SaltStack
   Plug 'https://github.com/saltstack/salt-vim.git'
   "  YAML
@@ -49,20 +60,22 @@ endif
   set showcmd             " Show (partial) command in status line.
   set modeline            " Enable modeline.
   set number              " Show the line numbers on the left side.
+"  set mouse=a
 
   "set autoindent
   set noautoindent        " I indent my code myself.
   set nocindent           " I indent my code myself.
   "set smartindent        " Or I let the smartindent take care of it.
-  
+
   set ttimeout
   set ttimeoutlen=100
   set mouse=r " keep copy/paste in iterm2
 
   " color scheme
-"  let $NVIM_TUI_ENABLE_TRUE_COLOR=2
-"  set background=dark
-  colorscheme kalisi
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set background=dark
+  colorscheme solarized
+"  colorscheme kalisi
 
   " font
   let g:Guifont="Inconsolata-g for Powerline:g12"
@@ -89,10 +102,20 @@ endif
     let g:airline_right_alt_sep = '|'
   " }
 
+  " CtrlP {
+    let g:ctrlp_working_path_mode = 0
+  " }
+
   " Nerdtree {
     silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
     "let NERDTreeQuitOnOpen=1 "auto close nerdtree
   " }
+	" YouCompleteMe {
+	let g:ycm_key_list_select_completion = ['<C-j>']
+	let g:ycm_key_list_previous_completion = ['<C-k>']
+	let g:ycm_autoclose_preview_window_after_completion=1
+	nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+	" }
 " }
 
 " Helper Functions {
