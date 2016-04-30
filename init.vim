@@ -58,13 +58,12 @@ endif
 set backspace=indent,eol,start      " Allow backspace over everything in insert mode.
 set complete-=i
 set nrformats-=octal
-set smarttab
 set showcmd             " Show (partial) command in status line.
 set modeline            " Enable modeline.
 set number              " Show the line numbers on the left side.
-"  set mouse=a
 
 " tabs
+"set smarttab
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -72,9 +71,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 "set autoindent
-set noautoindent        " I indent my code myself.
-set nocindent           " I indent my code myself.
-set smartindent         " Or I let the smartindent take care of it.
+"set noautoindent        " I indent my code myself.
+"set nocindent           " I indent my code myself.
+"set smartindent         " Or I let the smartindent take care of it.
 
 " Enable Spell Checking
 set spell
@@ -82,6 +81,7 @@ set spell
 set ttimeout
 set ttimeoutlen=100
 set mouse=r " keep copy/paste in iterm2
+"  set mouse=a
 
 " color scheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -115,7 +115,9 @@ let g:airline_right_alt_sep = '|'
 " }
 
 " CtrlP {
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 " }
 
 " Nerdtree {
