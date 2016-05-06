@@ -55,7 +55,7 @@ Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm inst
 " HTML
 Plug 'othree/html5.vim'
 " Python
-Plug 'klen/python-mode'
+Plug 'https://github.com/klen/python-mode.git'
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 "  YAML
