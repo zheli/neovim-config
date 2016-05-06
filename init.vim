@@ -48,7 +48,7 @@ Plug 'burnettk/vim-angular'
 " JavaScript
 "Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/jelera/vim-javascript-syntax.git'
-Plug 'https://github.com/vim-scripts/JavaScript-Indent.git' " better indentation
+Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
 Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
 " HTML
 Plug 'othree/html5.vim'
@@ -137,6 +137,8 @@ let g:Guifont="Inconsolata-g for Powerline:g12"
  nmap <C-w><C-j> <C-w><C-w>
  " search current word
  nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
+ " search current word
+ nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
  " remap terminal keys
  tnoremap <Esc> <C-\><C-n>
 " }
