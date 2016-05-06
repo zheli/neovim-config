@@ -14,6 +14,13 @@ Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 
+"Ag search
+Plug 'rking/ag.vim'
+Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
+
+"Tags
+Plug 'https://github.com/szw/vim-tags.git'
+
 " Interface
 " ---
 " airline is a better status line and a tab-bar for nvim.
@@ -29,13 +36,22 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 " numbers.vim is a plugin for intelligently toggling line numbers
 Plug 'myusuf3/numbers.vim'
+" Choose window like tmux
+Plug 'https://github.com/t9md/vim-choosewin.git'
+" Tag
+Plug 'utags'
 
 " File Type
 " ---
+" Angular
+Plug 'burnettk/vim-angular'
 " JavaScript
-Plug 'pangloss/vim-javascript'
+"Plug 'pangloss/vim-javascript'
+Plug 'https://github.com/jelera/vim-javascript-syntax.git'
+Plug 'https://github.com/vim-scripts/JavaScript-Indent.git' " better indentation
 Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
-
+" HTML
+Plug 'othree/html5.vim'
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 "  YAML
@@ -74,26 +90,55 @@ set expandtab
 "set noautoindent        " I indent my code myself.
 "set nocindent           " I indent my code myself.
 "set smartindent         " Or I let the smartindent take care of it.
+"html
+"autocmd FileType html set tabstop=2|set shiftwidth=2
+"javascript
+autocmd FileType javscript set tabstop=4|set shiftwidth=4
 
 " Enable Spell Checking
 set spell
+
+"wrap line that is longer than 100
+set wrap
+set textwidth=100
+set formatoptions+=t
+set wrapmargin=0
+set linebreak
+
+"color text when length is over 100
+set colorcolumn=+1
+
+" note trailing space at end of next line
+set showbreak=>\ \ \
 
 set ttimeout
 set ttimeoutlen=100
 set mouse=r " keep copy/paste in iterm2
 "  set mouse=a
 
+" cursor
+let $NVIM_tuI_ENABLE_CURSOR_SHAPE=1
+
 " color scheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme solarized
-"  colorscheme kalisi
+"colorscheme solarized
+colorscheme kalisi
 
 " font
 let g:Guifont="Inconsolata-g for Powerline:g12"
 
-" remap terminal keys
-tnoremap <Esc> <C-\><C-n>
+" key bindings
+ " quickfix window
+ map <F6> :copen<CR>
+ " choosewin
+ nmap <Leader>=  <Plug>(choosewin)
+ " switch window
+ nmap <C-w><C-j> <C-w><C-w>
+ " search current word
+ nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
+ " remap terminal keys
+ tnoremap <Esc> <C-\><C-n>
 " }
 
 " Plugin Settings {
@@ -112,6 +157,17 @@ let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ' '
 let g:airline_right_alt_sep = '|'
+" }
+"
+" angular settings {
+let g:angular_filename_convention = 'camelcased'
+" }
+" choosewin {
+let g:choosewin_overlay_enable = 1
+" }
+"
+" jsctags shortcut key {
+nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 " }
 
 " CtrlP {
@@ -144,5 +200,43 @@ fun! <SID>StripTrailingWhitespaces()
 	%s/\s\+$//e
 	call cursor(l, c)
 endfun
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
+
+augroup vimrc_autocmd
+  autocmd!
+  " auto remove trailling whitespace on save
+  autocmd filetype html,c,cpp,java,php,ruby,python,php,vimrc,javascript autocmd bufwritepre <buffer> :call <sid>StripTrailingWhitespaces()
+  " auto close when only nerdtree is left
+  autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+augroup end
+
+" cursor lines
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline cursorcolumn
+    au WinLeave * setlocal nocursorline nocursorcolumn
+augroup END
+set cursorline cursorcolumn
+
+""highlight trailing whitespace
+:hi ExtraWhitespace ctermbg=red guibg=red
+call matchadd('ExtraWhitespace', '\s\+$', 11)
+
+" }
+" abbreviation use 'abbv'<space> to trigger {
+iab ipdb import ipdb; ipdb.set_trace()
 " }
 " vim: noai:ts=4:sw=4
