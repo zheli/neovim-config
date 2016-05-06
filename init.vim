@@ -40,6 +40,8 @@ Plug 'myusuf3/numbers.vim'
 Plug 'https://github.com/t9md/vim-choosewin.git'
 " Tag
 Plug 'utags'
+" Tagbar
+Plug 'https://github.com/majutsushi/tagbar.git'
 
 " File Type
 " ---
@@ -52,6 +54,8 @@ Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
 Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
 " HTML
 Plug 'othree/html5.vim'
+" Python
+Plug 'klen/python-mode'
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 "  YAML
@@ -86,10 +90,10 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
-"set autoindent
+set autoindent
 "set noautoindent        " I indent my code myself.
 "set nocindent           " I indent my code myself.
-"set smartindent         " Or I let the smartindent take care of it.
+"set smartindent         " Generally, smartindent shouldn't be used at all.
 "html
 "autocmd FileType html set tabstop=2|set shiftwidth=2
 "javascript
@@ -135,12 +139,16 @@ let g:Guifont="Inconsolata-g for Powerline:g12"
  nmap <Leader>=  <Plug>(choosewin)
  " switch window
  nmap <C-w><C-j> <C-w><C-w>
+ " tagbar
+nmap <F8> :TagbarToggle<CR>
  " search current word
  nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
  " search current word
  nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
  " remap terminal keys
  tnoremap <Esc> <C-\><C-n>
+" numbers
+nnoremap <F3> :NumbersToggle<CR>
 " }
 
 " Plugin Settings {
@@ -183,8 +191,9 @@ silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
 
-" numbers {
-nnoremap <F3> :NumbersToggle<CR>
+" tagbar {
+let g:tagbar_width=40
+let g:tagbar_autoclose=1
 " }
 " YouCompleteMe {
 let g:ycm_key_list_select_completion = ['<C-j>']
