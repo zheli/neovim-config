@@ -35,6 +35,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " nerdtree
 Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " numbers.vim is a plugin for intelligently toggling line numbers
 Plug 'myusuf3/numbers.vim'
 " Choose window like tmux
@@ -163,14 +164,14 @@ let g:airline_powerline_fonts = 1
 let airline#extensions#default#section_use_groupitems = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#right_sep = ' '
+"let g:airline#extensions#tabline#right_alt_sep = '|'
+"let g:airline_left_sep = ' '
+"let g:airline_left_alt_sep = '|'
+"let g:airline_right_sep = ' '
+"let g:airline_right_alt_sep = '|'
 " }
 "
 " angular settings {
@@ -192,6 +193,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Nerdtree {
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
+let g:NERDTreeWinSize = 40 "nerdtree window width
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
 " pymode settings
