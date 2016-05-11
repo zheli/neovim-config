@@ -2,7 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Plugins {
 " ctrl-p is a fuzzy file finder.
-Plug 'kien/ctrlp.vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 " save sessions
 Plug 'https://github.com/tpope/vim-obsession.git'
 "  YouCompleteMe
@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
 Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'https://github.com/easysid/mod8.vim.git'
+Plug 'mhartington/oceanic-next'
 " fugitive
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " nerdtree
@@ -60,7 +61,9 @@ Plug 'https://github.com/klen/python-mode.git'
 Plug 'https://github.com/saltstack/salt-vim.git'
 "  YAML
 Plug 'avakhov/vim-yaml'
-
+" devicons (must be the last one)
+Plug 'https://github.com/ryanoasis/vim-devicons.git'
+"
 " }
 call plug#end()
 
@@ -81,6 +84,7 @@ set nrformats-=octal
 set showcmd             " Show (partial) command in status line.
 set modeline            " Enable modeline.
 set number              " Show the line numbers on the left side.
+set encoding=utf8
 
 " tabs
 "set smarttab
@@ -121,7 +125,7 @@ set mouse=r " keep copy/paste in iterm2
 "  set mouse=a
 
 " cursor
-let $NVIM_tuI_ENABLE_CURSOR_SHAPE=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " color scheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -190,7 +194,16 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
-
+" pymode settings
+let g:pymode_options_max_line_length = 100
+let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
+"turn off pymode doc
+"let g:pymode_doc = 0
+set completeopt=menu
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_rename_bind='<C-c>rr'
+" }
 " tagbar {
 let g:tagbar_width=40
 let g:tagbar_autoclose=1
