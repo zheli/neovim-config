@@ -18,6 +18,9 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'rking/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
+"Syntax check
+Plug 'https://github.com/scrooloose/syntastic.git'
+
 "Tags
 Plug 'https://github.com/szw/vim-tags.git'
 
@@ -189,6 +192,8 @@ nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_mo
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+let g:ctrlp_custom_ignore = 'node_modules\|artifact'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 " }
 
 " Nerdtree {
