@@ -195,6 +195,17 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = 'node_modules\|artifact'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 " }
+" syntastic {
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"] "for AngularJS
+" }
 
 " Nerdtree {
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
