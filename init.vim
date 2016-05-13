@@ -221,6 +221,7 @@ set completeopt=menu
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind='<C-c>rr'
+let g:pymode_lint_on_write = 0
 " }
 " tagbar {
 let g:tagbar_width=40
@@ -234,8 +235,10 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }
 " }
 
-" Helper Functions {
+" Helper Commands/Functions {
 " remove trailing whitespace
+command! ClearQuickfixList cexpr []
+
 fun! <SID>StripTrailingWhitespaces()
 	let l = line(".")
 	let c = col(".")
