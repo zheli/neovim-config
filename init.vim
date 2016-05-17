@@ -171,14 +171,14 @@ let g:airline_powerline_fonts = 1
 let airline#extensions#default#section_use_groupitems = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#tabline#right_sep = ' '
-"let g:airline#extensions#tabline#right_alt_sep = '|'
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = '|'
-"let g:airline_right_sep = ' '
-"let g:airline_right_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
 " }
 
 " ag search {
@@ -222,6 +222,8 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming em
 " Nerdtree {
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 let g:NERDTreeWinSize = 40 "nerdtree window width
+let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeShowHidden=1
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
 " pymode settings
