@@ -7,7 +7,8 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-obsession.git'
 "  YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
-
+" Formatting
+Plug 'https://github.com/godlygeek/tabular.git'
 " Comments
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 " Pair parenthesis
@@ -17,6 +18,9 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 "Ag search
 Plug 'rking/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
+
+"Toggle list
+Plug 'https://github.com/milkypostman/vim-togglelist.git'
 
 "Syntax check
 Plug 'https://github.com/scrooloose/syntastic.git'
@@ -71,9 +75,6 @@ Plug 'https://github.com/ryanoasis/vim-devicons.git'
 " }
 call plug#end()
 
-if has('autocmd')
-	filetype plugin indent on
-endif
 if has('syntax') && !exists('g:syntax_on')
 	syntax enable
 endif
@@ -105,7 +106,7 @@ set autoindent
 "html
 "autocmd FileType html set tabstop=2|set shiftwidth=2
 "javascript
-autocmd FileType javscript set tabstop=4|set shiftwidth=4
+"autocmd FileType javscript set tabstop=4|set shiftwidth=4
 
 " Enable Spell Checking
 set spell
@@ -141,22 +142,25 @@ colorscheme kalisi
 let g:Guifont="Inconsolata-g for Powerline:g12"
 
 " key bindings
- " quickfix window
- map <F6> :copen<CR>
- " choosewin
- nmap <Leader>=  <Plug>(choosewin)
- " switch window
- nmap <C-w><C-j> <C-w><C-w>
- " tagbar
+" quickfix window
+map <F6> :copen<CR>
+" choosewin
+nmap <Leader>=  <Plug>(choosewin)
+" switch window
+nmap <C-w><C-j> <C-w><C-w>
+" tagbar
 nmap <F8> :TagbarToggle<CR>
- " search current word
- nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
- " search current word
- nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
- " remap terminal keys
- tnoremap <Esc> <C-\><C-n>
+" search current word
+nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
+" search current word
+nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
+" remap terminal keys
+tnoremap <Esc> <C-\><C-n>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
+
+nnoremap <leader>gr :Ggr <cword><CR>
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }
 
 " Plugin Settings {
@@ -176,7 +180,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:airline_right_sep = ' '
 "let g:airline_right_alt_sep = '|'
 " }
-"
+
+" ag search {
+"let g:ag_prg="ag --vimgrep --exclude=\*.min.js"
+" }
+
 " angular settings {
 let g:angular_filename_convention = 'camelcased'
 " }
@@ -192,8 +200,12 @@ nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_mo
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|artifact'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](node_modules|artifact)$',
+  \ }
+"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules/*
+"let g:ctrlp_custom_ignore = 'node_modules\|artifact'
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 " }
 " syntastic {
 set statusline+=%#warningmsg#
@@ -231,11 +243,11 @@ let g:tagbar_autoclose=1
 let g:ycm_key_list_select_completion = ['<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " }
 " }
 
 " Helper Commands/Functions {
+command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 " remove trailing whitespace
 command! ClearQuickfixList cexpr []
 
