@@ -19,6 +19,9 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'rking/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
+"Global search and replace
+Plug 'https://github.com/vim-scripts/greplace.vim.git'
+
 "Toggle list
 Plug 'https://github.com/milkypostman/vim-togglelist.git'
 
@@ -145,7 +148,7 @@ let g:Guifont="Inconsolata-g for Powerline:g12"
 " quickfix window
 map <F6> :copen<CR>
 " choosewin
-nmap <Leader>=  <Plug>(choosewin)
+nmap - <Plug>(choosewin)
 " switch window
 nmap <C-w><C-j> <C-w><C-w>
 " tagbar
