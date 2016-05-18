@@ -19,8 +19,8 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'rking/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
-"Global search and replace
-Plug 'https://github.com/vim-scripts/greplace.vim.git'
+"Search and replace
+Plug 'https://github.com/dkprice/vim-easygrep.git'
 
 "Toggle list
 Plug 'https://github.com/milkypostman/vim-togglelist.git'
