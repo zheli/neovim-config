@@ -67,6 +67,7 @@ Plug 'burnettk/vim-angular'
 Plug 'https://github.com/jelera/vim-javascript-syntax.git'
 Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
 Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
+Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax for js libs
 " HTML
 Plug 'othree/html5.vim'
 " Python
@@ -198,6 +199,10 @@ let g:angular_filename_convention = 'camelcased'
 let g:choosewin_overlay_enable = 1
 " }
 "
+" javscript-libraries-syntax {
+let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter,requirejs'
+" }
+" 
 " jsctags shortcut key {
 nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 " }
@@ -222,6 +227,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_ignore_files = ['\.py$']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"] "for AngularJS
 " }
 
@@ -241,7 +247,7 @@ set completeopt=menu
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind='<C-c>rr'
-let g:pymode_lint_on_write = 0
+"let g:pymode_lint_on_write = 0
 " }
 " tagbar {
 let g:tagbar_width=40
