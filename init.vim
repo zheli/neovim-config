@@ -31,6 +31,9 @@ Plug 'https://github.com/scrooloose/syntastic.git'
 "Tags
 Plug 'https://github.com/szw/vim-tags.git'
 
+"Run Python Tests
+Plug 'https://github.com/JarrodCTaylor/vim-python-test-runner'
+
 " Interface
 " ---
 " airline is a better status line and a tab-bar for nvim.
@@ -67,7 +70,7 @@ Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm inst
 " HTML
 Plug 'othree/html5.vim'
 " Python
-Plug 'https://github.com/klen/python-mode.git'
+Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 "  YAML
@@ -145,8 +148,6 @@ colorscheme kalisi
 let g:Guifont="Inconsolata-g for Powerline:g12"
 
 " key bindings
-" quickfix window
-map <F6> :copen<CR>
 " choosewin
 nmap - <Plug>(choosewin)
 " switch window
@@ -161,6 +162,8 @@ nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
 tnoremap <Esc> <C-\><C-n>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
+" Gstatus toggle
+nmap <F6> :ToggleGStatus<CR>
 
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -255,6 +258,17 @@ let g:ycm_autoclose_preview_window_after_completion=1
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 " remove trailing whitespace
 command! ClearQuickfixList cexpr []
+
+function! ToggleGStatus()
+    if buflisted(bufname('.git/index'))
+        bd .git/index
+    else
+        Gstatus
+    endif
+endfunction
+command ToggleGStatus :call ToggleGStatus()
+
+nmap <F3> :ToggleGStatus<CR>
 
 fun! <SID>StripTrailingWhitespaces()
 	let l = line(".")
