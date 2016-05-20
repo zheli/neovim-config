@@ -97,6 +97,7 @@ set showcmd             " Show (partial) command in status line.
 set modeline            " Enable modeline.
 set number              " Show the line numbers on the left side.
 set encoding=utf8
+set smartcase           " case insentive search if first letter is not capital
 
 " tabs
 "set smarttab
