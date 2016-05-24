@@ -14,6 +14,8 @@ Plug 'https://github.com/scrooloose/nerdcommenter.git'
 " Pair parenthesis
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
+" Undo tree
+Plug 'https://github.com/sjl/gundo.vim.git'
 
 "Ag search
 Plug 'rking/ag.vim'
@@ -149,6 +151,9 @@ colorscheme kalisi
 " font
 let g:Guifont="Inconsolata-g for Powerline:g12"
 
+" ignore list
+set wildignore=*.o,*~,*.pyc
+
 " key bindings
 " choosewin
 nmap - <Plug>(choosewin)
@@ -164,6 +169,8 @@ nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
 tnoremap <Esc> <C-\><C-n>
 " numbers
 nnoremap <F3> :NumbersToggle<CR>
+" undo tree
+nnoremap <F5> :GundoToggle<CR>
 " Gstatus toggle
 nmap <F6> :ToggleGStatus<CR>
 
@@ -173,20 +180,20 @@ nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Plugin Settings {
 " Airline {
-"    let g:airline_theme = 'serene'
 let g:airline_theme = 'kalisi'
+"let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let airline#extensions#default#section_use_groupitems = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = '|'
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = '|'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#right_sep = ' '
+"let g:airline#extensions#tabline#right_alt_sep = '|'
+"let g:airline_left_sep = ' '
+"let g:airline_left_alt_sep = '|'
+"let g:airline_right_sep = ' '
+"let g:airline_right_alt_sep = '|'
 " }
 
 " ag search {
@@ -231,6 +238,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = ['\.py$']
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"] "for AngularJS
 " }
+"
+" Undo tree {
+let g:gundo_right = 1
+" }
 
 " Nerdtree {
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
@@ -274,8 +285,6 @@ function! ToggleGStatus()
     endif
 endfunction
 command ToggleGStatus :call ToggleGStatus()
-
-nmap <F3> :ToggleGStatus<CR>
 
 fun! <SID>StripTrailingWhitespaces()
 	let l = line(".")
