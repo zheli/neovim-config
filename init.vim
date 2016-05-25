@@ -14,6 +14,7 @@ Plug 'https://github.com/scrooloose/nerdcommenter.git'
 " Pair parenthesis
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/tpope/vim-surround.git'
 
 " Undo tree
 Plug 'https://github.com/sjl/gundo.vim.git'
@@ -29,8 +30,8 @@ Plug 'https://github.com/dkprice/vim-easygrep.git'
 Plug 'https://github.com/milkypostman/vim-togglelist.git'
 
 "Syntax check
-"Plug 'https://github.com/scrooloose/syntastic.git'
-Plug 'https://github.com/neomake/neomake.git'
+Plug 'https://github.com/scrooloose/syntastic.git'
+"Plug 'https://github.com/neomake/neomake.git'
 
 "Tags
 Plug 'https://github.com/szw/vim-tags.git'
@@ -228,7 +229,12 @@ let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirou
 " jsctags shortcut key {
 nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 " }
-
+" 
+" neomake {
+"autocmd! BufWritePost * Neomake "run Neomake on write
+"autocmd! BufReadPre,FileReadPre * Neomake "run Neomake when open file
+" }
+"
 " CtrlP {
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <leader>f :CtrlP<CR>
