@@ -23,6 +23,14 @@ Plug 'https://github.com/sjl/gundo.vim.git'
 Plug 'rking/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
+"Repeat any key mapping commands
+Plug 'https://github.com/tpope/vim-repeat.git'
+
+"Code snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'https://github.com/matthewsimo/angular-vim-snippets.git'
+
 "Search and replace
 Plug 'https://github.com/dkprice/vim-easygrep.git'
 
@@ -49,6 +57,8 @@ Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
 Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'https://github.com/easysid/mod8.vim.git'
 Plug 'mhartington/oceanic-next'
+Plug 'https://github.com/scwood/vim-hybrid.git'
+
 " fugitive
 Plug 'https://github.com/tpope/vim-fugitive.git'
 " nerdtree
@@ -102,6 +112,7 @@ set showcmd             " Show (partial) command in status line.
 set modeline            " Enable modeline.
 set number              " Show the line numbers on the left side.
 set encoding=utf8
+set ignorecase
 set smartcase           " case insentive search if first letter is not capital
 
 " tabs
@@ -147,6 +158,7 @@ if has("user_commands")
     command! -bang -nargs=* -complete=file W w<bang> <args>
     command! -bang -nargs=* -complete=file Wq wq<bang> <args>
     command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+    command! -bang -nargs=* -complete=file Edit edit<bang> <args>
     command! -bang Wa wa<bang>
     command! -bang WA wa<bang>
     command! -bang Q q<bang>
@@ -172,6 +184,8 @@ set wildignore=*.o,*~,*.pyc
 " key bindings
 " choosewin
 nmap - <Plug>(choosewin)
+"jsctags shortcut key 
+nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR> 
 " switch window
 nmap <C-w><C-j> <C-w><C-w>
 " tagbar
@@ -191,6 +205,7 @@ nmap <F6> :ToggleGStatus<CR>
 
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
 " }
 
 " Plugin Settings {
@@ -226,9 +241,6 @@ let g:choosewin_overlay_enable = 1
 let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter,requirejs'
 " }
 " 
-" jsctags shortcut key {
-nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
-" }
 " 
 " neomake {
 "autocmd! BufWritePost * Neomake "run Neomake on write
@@ -252,7 +264,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = ['\.py$']
@@ -262,13 +274,22 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming em
 " Undo tree {
 let g:gundo_right = 1
 " }
+"
+" UltiSnips {
+let g:UltiSnipsExpandTrigger="<C-l>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
+" }
 " Nerdtree {
 silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 let g:NERDTreeWinSize = 40 "nerdtree window width
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden=1
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
+" }
+" numbers {
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'nerdtree']
 " }
 " pymode settings
 let g:pymode_options_max_line_length = 100
@@ -289,6 +310,9 @@ let g:tagbar_autoclose=1
 let g:ycm_key_list_select_completion = ['<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-k>']
 let g:ycm_autoclose_preview_window_after_completion=1
+
+" Repeat mapped key commands
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " }
 " }
 
