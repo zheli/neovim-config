@@ -202,6 +202,10 @@ nnoremap <F3> :NumbersToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 " Gstatus toggle
 nmap <F6> :ToggleGStatus<CR>
+" Save file
+nmap <F2> :update<CR>
+vmap <F2> <Esc><F2>gv
+imap <F2> <c-o><F2>
 
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
