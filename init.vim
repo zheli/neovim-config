@@ -77,6 +77,10 @@ Plug 'https://github.com/majutsushi/tagbar.git'
 " ---
 " Angular
 Plug 'burnettk/vim-angular'
+
+" CoffeeScript
+Plug 'kchmck/vim-coffee-script'
+
 " JavaScript
 "Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/jelera/vim-javascript-syntax.git'
@@ -257,6 +261,7 @@ nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](node_modules|artifact)$',
+  \ 'file': '\.png$',
   \ }
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules/*
 "let g:ctrlp_custom_ignore = 'node_modules\|artifact'
