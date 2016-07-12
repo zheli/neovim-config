@@ -210,6 +210,8 @@ nmap <F6> :ToggleGStatus<CR>
 nmap <F2> :update<CR>
 vmap <F2> <Esc><F2>gv
 imap <F2> <c-o><F2>
+" delete word in insert mode
+imap <C-w> <C-o>diw
 
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
