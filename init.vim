@@ -29,7 +29,7 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 "Code snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'https://github.com/matthewsimo/angular-vim-snippets.git'
+Plug 'https://github.com/zheli/angular-vim-snippets.git'
 
 "Search and replace
 Plug 'https://github.com/dkprice/vim-easygrep.git'
@@ -53,11 +53,12 @@ Plug 'https://github.com/JarrodCTaylor/vim-python-test-runner'
 Plug 'bling/vim-airline', 'v0.8'
 Plug 'vim-airline/vim-airline-themes'
 " colorschemes
+Plug 'adlawson/vim-sorcerer'
+Plug 'https://github.com/easysid/mod8.vim.git'
 Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
 Plug 'https://github.com/freeo/vim-kalisi.git'
-Plug 'https://github.com/easysid/mod8.vim.git'
-Plug 'mhartington/oceanic-next'
 Plug 'https://github.com/scwood/vim-hybrid.git'
+Plug 'mhartington/oceanic-next'
 
 " fugitive
 Plug 'https://github.com/tpope/vim-fugitive.git'
