@@ -94,6 +94,10 @@ Plug 'othree/html5.vim'
 Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
+
+" Scala
+Plug 'https://github.com/derekwyatt/vim-scala.git'
+
 "  YAML
 Plug 'avakhov/vim-yaml'
 " devicons (must be the last one)
