@@ -55,7 +55,8 @@ Plug 'vim-airline/vim-airline-themes'
 " colorschemes
 Plug 'adlawson/vim-sorcerer'
 Plug 'https://github.com/easysid/mod8.vim.git'
-Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
+"Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'https://github.com/scwood/vim-hybrid.git'
 Plug 'mhartington/oceanic-next'
@@ -91,7 +92,8 @@ Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax fo
 " HTML
 Plug 'othree/html5.vim'
 " Python
-Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
+"Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
+Plug 'https://github.com/klen/python-mode.git'
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 
