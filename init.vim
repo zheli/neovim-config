@@ -20,7 +20,7 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/sjl/gundo.vim.git'
 
 "Ag search
-Plug 'rking/ag.vim'
+Plug 'albfan/ag.vim'
 Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
 
 "Repeat any key mapping commands
