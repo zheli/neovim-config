@@ -38,8 +38,8 @@ Plug 'https://github.com/dkprice/vim-easygrep.git'
 Plug 'https://github.com/milkypostman/vim-togglelist.git'
 
 "Syntax check
-Plug 'https://github.com/scrooloose/syntastic.git'
-"Plug 'https://github.com/neomake/neomake.git'
+"Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/neomake/neomake.git'
 
 "Tags
 Plug 'https://github.com/szw/vim-tags.git'
@@ -262,8 +262,7 @@ let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirou
 " 
 " 
 " neomake {
-"autocmd! BufWritePost * Neomake "run Neomake on write
-"autocmd! BufReadPre,FileReadPre * Neomake "run Neomake when open file
+autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/write file
 " }
 "
 " CtrlP {
@@ -320,6 +319,7 @@ set completeopt=menu
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind='<C-c>rr'
+let g:pymode_folding = 0
 "let g:pymode_lint_on_write = 0
 " }
 " tagbar {
