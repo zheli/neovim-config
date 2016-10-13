@@ -38,7 +38,7 @@ Plug 'https://github.com/dkprice/vim-easygrep.git'
 Plug 'https://github.com/milkypostman/vim-togglelist.git'
 
 "Syntax check
-"Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/neomake/neomake.git'
 
 "Tags
@@ -139,9 +139,12 @@ set autoindent
 "set nocindent           " I indent my code myself.
 "set smartindent         " Generally, smartindent shouldn't be used at all.
 "html
-"autocmd FileType html set tabstop=2|set shiftwidth=2
+autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 "javascript
 "autocmd FileType javscript set tabstop=4|set shiftwidth=4
+
+"folding
+set foldnestmax=2
 
 " Enable Spell Checking
 set spell
@@ -287,7 +290,23 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ignore_files = ['\.py$']
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute " ,"trimming empty <", "unescaped &" , "lacks \"action", "is not recognized!", "discarding unexpected"] "for AngularJS
+"for AngularJS
+let g:syntastic_html_tidy_ignore_errors=[
+  \"proprietary attribute",
+  \"trimming empty <",
+  \"unescaped &",
+  \"lacks \"action",
+  \"is not recognized!",
+  \"discarding unexpected"]
+" Disable inherited syntastic https://robots.thoughtbot.com/my-life-with-neovim
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+" }
+" neomake {
+let g:neomake_serialize = 1
+let g:neomake_serialize_aboetrt_on_error = 1
 " }
 "
 " Undo tree {
@@ -319,7 +338,7 @@ set completeopt=menu
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_rename_bind='<C-c>rr'
-let g:pymode_folding = 0
+"let g:pymode_folding = 0
 "let g:pymode_lint_on_write = 0
 " }
 " tagbar {
