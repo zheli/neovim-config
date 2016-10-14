@@ -344,7 +344,7 @@ let g:pymode_rope_rename_bind='<C-c>rr'
 " }
 " tagbar {
 let g:tagbar_width=40
-let g:tagbar_autoclose=1
+let g:tagbar_autoclose=0
 " }
 " YouCompleteMe {
 let g:ycm_key_list_select_completion = ['<C-j>']
