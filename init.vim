@@ -92,8 +92,8 @@ Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax fo
 " HTML
 Plug 'othree/html5.vim'
 " Python
-"Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
-Plug 'https://github.com/klen/python-mode.git'
+Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
+"Plug 'https://github.com/klen/python-mode.git'
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 
@@ -324,6 +324,7 @@ silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 let g:NERDTreeWinSize = 40 "nerdtree window width
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden=1
+let g:NERDTreeUpdateOnWrite = 0 " issue: https://github.com/Xuyuanp/nerdtree-git-plugin/issues/4
 "let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
 " numbers {
