@@ -92,8 +92,7 @@ Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax fo
 " HTML
 Plug 'othree/html5.vim'
 " Python
-Plug 'https://github.com/klen/python-mode.git', { 'commit': 'da4bfe5a409cebc4bd79d0d68c2f0a68b2d6c598' }
-"Plug 'https://github.com/klen/python-mode.git'
+Plug 'https://github.com/klen/python-mode.git', {'branch': 'develop'}
 "  SaltStack
 Plug 'https://github.com/saltstack/salt-vim.git'
 
@@ -109,7 +108,7 @@ Plug 'https://github.com/ryanoasis/vim-devicons.git'
 call plug#end()
 
 if has('syntax') && !exists('g:syntax_on')
-	syntax enable
+    syntax enable
 endif
 
 " Configuration {
@@ -126,6 +125,8 @@ set encoding=utf8
 set ignorecase
 set smartcase           " case insentive search if first letter is not capital
 
+"plugins and indentation for different filetype
+filetype plugin indent on
 " tabs
 "set smarttab
 " show existing tab with 4 spaces width
@@ -198,8 +199,8 @@ set wildignore=*.o,*~,*.pyc
 " key bindings
 " choosewin
 nmap - <Plug>(choosewin)
-"jsctags shortcut key 
-nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR> 
+"jsctags shortcut key
+nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 " switch window
 nmap <C-w><C-j> <C-w><C-w>
 " tagbar
@@ -262,8 +263,8 @@ let g:choosewin_overlay_enable = 1
 " javscript-libraries-syntax {
 let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter,requirejs'
 " }
-" 
-" 
+"
+"
 " neomake {
 autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/write file
 " }
@@ -317,6 +318,7 @@ let g:gundo_right = 1
 let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsSnippetDirectories=['UltiSnips']
 
 " }
 " Nerdtree {
@@ -371,10 +373,10 @@ endfunction
 command ToggleGStatus :call ToggleGStatus()
 
 fun! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
 endfun
 
 " Close all open buffers on entering a window if the only
