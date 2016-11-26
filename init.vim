@@ -30,6 +30,7 @@ Plug 'https://github.com/tpope/vim-repeat.git'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'https://github.com/zheli/angular-vim-snippets.git'
+Plug 'https://github.com/zheli/zhe-ultisnips-snippets.git'
 
 "Search and replace
 Plug 'https://github.com/dkprice/vim-easygrep.git'
@@ -84,7 +85,7 @@ Plug 'burnettk/vim-angular'
 Plug 'kchmck/vim-coffee-script'
 
 " JavaScript
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 Plug 'https://github.com/jelera/vim-javascript-syntax.git'
 Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
 Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
@@ -141,11 +142,13 @@ set autoindent
 "set smartindent         " Generally, smartindent shouldn't be used at all.
 "html
 autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
 "javascript
 "autocmd FileType javscript set tabstop=4|set shiftwidth=4
 
 "folding
 set foldnestmax=2
+"set foldlevelstart=99
 
 " Enable Spell Checking
 set spell
@@ -225,6 +228,11 @@ imap <F2> <c-o><F2>
 imap <C-w> <C-o>diw
 " escape using jj
 imap jj <Esc>
+" jump to tag with ctrl-]
+ nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
 
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -271,15 +279,13 @@ autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/w
 "
 " CtrlP {
 let g:ctrlp_working_path_mode = 'ra'
-nnoremap <leader>f :CtrlP<CR>
+let g:ctrlp_cmd = 'CtrlPMixed' " use CtrlPMixed mode
+let g:ctrlp_show_hidden = 1 " show hidden files
 nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](node_modules|artifact)$',
   \ 'file': '\.png$',
   \ }
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,node_modules/*
-"let g:ctrlp_custom_ignore = 'node_modules\|artifact'
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 " }
 " syntastic {
 set statusline+=%#warningmsg#
