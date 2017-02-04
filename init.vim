@@ -143,6 +143,7 @@ set autoindent
 "html
 autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 "javascript
 "autocmd FileType javscript set tabstop=4|set shiftwidth=4
 
@@ -229,7 +230,7 @@ imap <C-w> <C-o>diw
 " escape using jj
 imap jj <Esc>
 " jump to tag with ctrl-]
- nnoremap <c-]> g<c-]>
+nnoremap <c-]> g<c-]>
 vnoremap <c-]> g<c-]>
 nnoremap g<c-]> <c-]>
 vnoremap g<c-]> <c-]>
@@ -237,6 +238,23 @@ vnoremap g<c-]> <c-]>
 nnoremap <leader>gr :Ggr <cword><CR>
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+
+" Moving lines up and down with Alt-j and Alt-k
+" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+" for Macs
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+inoremap ∆ <Esc>:m .-2<CR>==gi
+inoremap ˚ <Esc>:m .+1<CR>==gi
+vnoremap ∆ :m '<-2<CR>gv=gv
+vnoremap ˚ :m '>+1<CR>gv=gv
+" for Win/Linux
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 " }
 
 " Plugin Settings {
@@ -279,7 +297,7 @@ autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/w
 "
 " CtrlP {
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cmd = 'CtrlPMixed' " use CtrlPMixed mode
+let g:ctrlp_cmd = 'CtrlP' " use CtrlP default mode
 let g:ctrlp_show_hidden = 1 " show hidden files
 nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_custom_ignore = {
@@ -346,7 +364,8 @@ let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_l
 set completeopt=menu
 let g:pymode_rope = 1
 let g:pymode_rope_completion = 0
-let g:pymode_rope_rename_bind='<C-c>rr'
+let g:pymode_rope_rename_bind='<C-c>rr' " refactor: rename
+let g:pymode_rope_move='<C-c>rv' " refactor: move class/function
 "let g:pymode_folding = 0
 "let g:pymode_lint_on_write = 0
 " }
