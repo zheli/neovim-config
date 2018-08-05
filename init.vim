@@ -1,155 +1,134 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Plugins {
-" ctrl-p is a fuzzy file finder.
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-" save sessions
-Plug 'https://github.com/tpope/vim-obsession.git'
-"  YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
-" Formatting
-Plug 'https://github.com/godlygeek/tabular.git'
-" Comments
-Plug 'https://github.com/scrooloose/nerdcommenter.git'
+" Lanauage Server
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" Async completion framework
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Fuzzy - file opener
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Nerdtree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Source Control
+Plug 'tpope/vim-fugitive' " Fugitive (git)
+Plug 'airblade/vim-gitgutter' " Show git diff in vim
+
+" Search
+Plug 'albfan/ag.vim'
+
+" Editing
+Plug 'myusuf3/numbers.vim' " numbers.vim is a plugin for intelligently toggling line numbers
+Plug 'scrooloose/nerdcommenter' " comment out code
+Plug 'vim-scripts/restore_view.vim' " Restore view (cursor location and such)
 " Pair parenthesis
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/godlygeek/tabular.git' " Table Formatting
+Plug 'https://github.com/tpope/vim-obsession.git' " save sessions
+Plug 'https://github.com/szw/vim-tags.git' "Tags
+Plug 'majutsushi/tagbar' " Tagbar
 
-" Undo tree
-Plug 'https://github.com/sjl/gundo.vim.git'
-
-"Ag search
-Plug 'albfan/ag.vim'
-Plug 'https://github.com/Chun-Yang/vim-action-ag.git'
-
-"Repeat any key mapping commands
-Plug 'https://github.com/tpope/vim-repeat.git'
-
-"Code snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'https://github.com/zheli/angular-vim-snippets.git'
-Plug 'https://github.com/zheli/zhe-ultisnips-snippets.git'
-
-"Search and replace
-Plug 'https://github.com/dkprice/vim-easygrep.git'
-
-"Toggle list
-Plug 'https://github.com/milkypostman/vim-togglelist.git'
-
-"Syntax check
-Plug 'https://github.com/scrooloose/syntastic.git'
-Plug 'https://github.com/neomake/neomake.git'
-
-"Tags
-Plug 'https://github.com/szw/vim-tags.git'
-
-"Run Python Tests
-Plug 'https://github.com/JarrodCTaylor/vim-python-test-runner'
+""  YouCompleteMe
+"Plug 'Valloric/YouCompleteMe'
+"" Undo tree
+"Plug 'https://github.com/sjl/gundo.vim.git'
+"
+""Repeat any key mapping commands
+"Plug 'https://github.com/tpope/vim-repeat.git'
+"
+""Search and replace
+"Plug 'https://github.com/dkprice/vim-easygrep.git'
+"
+""Toggle list
+"Plug 'https://github.com/milkypostman/vim-togglelist.git'
+"
+""Syntax check
+"Plug 'https://github.com/scrooloose/syntastic.git'
+"Plug 'https://github.com/neomake/neomake.git'
+"
 
 " Interface
 " ---
-" airline is a better status line and a tab-bar for nvim.
-Plug 'bling/vim-airline', 'v0.8'
+" Airline statusbar
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" colorschemes
+
+" Colors
+Plug 'lifepillar/vim-solarized8'
 Plug 'adlawson/vim-sorcerer'
-Plug 'https://github.com/easysid/mod8.vim.git'
-"Plug 'https://github.com/frankier/neovim-colors-solarized-truecolor-only.git'
-Plug 'https://github.com/altercation/vim-colors-solarized.git'
 Plug 'https://github.com/freeo/vim-kalisi.git'
 Plug 'https://github.com/scwood/vim-hybrid.git'
-Plug 'mhartington/oceanic-next'
 
-" fugitive
-Plug 'https://github.com/tpope/vim-fugitive.git'
-" nerdtree
-Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" numbers.vim is a plugin for intelligently toggling line numbers
-Plug 'myusuf3/numbers.vim'
+"" numbers.vim is a plugin for intelligently toggling line numbers
+"Plug 'myusuf3/numbers.vim'
 " Choose window like tmux
-Plug 'https://github.com/t9md/vim-choosewin.git'
-" Tag
-Plug 'utags'
-" Tagbar
-Plug 'https://github.com/majutsushi/tagbar.git'
-
+Plug 't9md/vim-choosewin'
+"" Tag
+"Plug 'utags'
+"" Tagbar
+"Plug 'https://github.com/majutsushi/tagbar.git'
+"
 " File Type
 " ---
-" Angular
-Plug 'burnettk/vim-angular'
-
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script'
-
-" JavaScript
-Plug 'pangloss/vim-javascript'
-Plug 'https://github.com/jelera/vim-javascript-syntax.git'
-Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
-Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
-Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax for js libs
-" HTML
-Plug 'othree/html5.vim'
-" Python
-Plug 'https://github.com/klen/python-mode.git', {'branch': 'develop'}
-"  SaltStack
-Plug 'https://github.com/saltstack/salt-vim.git'
-
-" Scala
-Plug 'https://github.com/derekwyatt/vim-scala.git'
-
-"  YAML
-Plug 'avakhov/vim-yaml'
-" devicons (must be the last one)
-Plug 'https://github.com/ryanoasis/vim-devicons.git'
-"
+"" Angular
+"Plug 'burnettk/vim-angular'
+"" JavaScript
+"Plug 'pangloss/vim-javascript'
+"Plug 'https://github.com/jelera/vim-javascript-syntax.git'
+"Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
+"Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
+"Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax for js libs
+"" HTML
+"Plug 'othree/html5.vim'
+"" Python
+"Plug 'https://github.com/klen/python-mode.git', {'branch': 'develop'}
+""  SaltStack
+"Plug 'https://github.com/saltstack/salt-vim.git'
+Plug 'derekwyatt/vim-scala'
+Plug 'hashivim/vim-terraform'
+Plug 'avakhov/vim-yaml' "  YAML
+Plug 'https://github.com/ryanoasis/vim-devicons.git' " devicons (must be the last one)
 " }
 call plug#end()
 
-if has('syntax') && !exists('g:syntax_on')
-    syntax enable
-endif
-
-" Configuration {
-" }
+" Configuration {{
 
 " General {
+syntax enable " enable syntax support
+set autoindent
 set backspace=indent,eol,start      " Allow backspace over everything in insert mode.
 set complete-=i
-set nrformats-=octal
-set showcmd             " Show (partial) command in status line.
-set modeline            " Enable modeline.
-set number              " Show the line numbers on the left side.
 set encoding=utf8
+set expandtab " On pressing tab, insert 4 spaces
+set hlsearch " highlight all search matches
 set ignorecase
+set modeline            " Enable modeline.
+set nrformats-=octal
+set number              " Show the line numbers on the left side.
+set shiftwidth=4 " when indenting with '>', use 4 spaces width
+set showcmd             " Show (partial) command in status line.
 set smartcase           " case insentive search if first letter is not capital
+set softtabstop=4 " fill in the indentation gaps with 4 spaces
+set tabstop=4 " show existing tab with 4 spaces width
+set wildmenu " show autocomplete options
+set wildmode=longest,list,full " set <tab> completion behavior
 
 "plugins and indentation for different filetype
 filetype plugin indent on
-" tabs
-"set smarttab
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-set autoindent
-"set noautoindent        " I indent my code myself.
-"set nocindent           " I indent my code myself.
-"set smartindent         " Generally, smartindent shouldn't be used at all.
-"html
 autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType scss setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
-"javascript
-"autocmd FileType javscript set tabstop=4|set shiftwidth=4
-
-"folding
-set foldnestmax=2
-"set foldlevelstart=99
+autocmd FileType scala setlocal foldmethod=indent foldlevel=1
 
 " Enable Spell Checking
 set spell
@@ -160,234 +139,236 @@ set textwidth=100
 set formatoptions+=t
 set wrapmargin=0
 set linebreak
-
-"color text when length is over 100
-set colorcolumn=+1
+set colorcolumn=+1 "color text when length is over textwidth
 
 " note trailing space at end of next line
 set showbreak=>\ \ \
 
-set ttimeout
-set ttimeoutlen=100
-set mouse=r " keep copy/paste in iterm2
-"  set mouse=a
-"
-" Stupid shift key fixes
-if has("user_commands")
-    command! -bang -nargs=* -complete=file W w<bang> <args>
-    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-    command! -bang -nargs=* -complete=file Edit edit<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-endif
+"set ttimeout
+"set ttimeoutlen=100
+"set mouse=r " keep copy/paste in iterm2
+""  set mouse=a
+
+"" Stupid shift key fixes
+"if has("user_commands")
+"    command! -bang -nargs=* -complete=file W w<bang> <args>
+"    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+"    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+"    command! -bang -nargs=* -complete=file Edit edit<bang> <args>
+"    command! -bang Wa wa<bang>
+"    command! -bang WA wa<bang>
+"    command! -bang Q q<bang>
+"    command! -bang QA qa<bang>
+"    command! -bang Qa qa<bang>
+"endif
 
 " cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" cursor lines
+au WinEnter * set cursorline cursorcolumn
+au WinLeave * set nocursorline nocursorcolumn
+augroup CursorLine
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline cursorcolumn
+    au WinLeave * setlocal nocursorline nocursorcolumn
+augroup END
+set cursorline cursorcolumn
 
-" color scheme
+
+
+" Colorscheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-"colorscheme solarized
-colorscheme kalisi
-
-" font
-let g:Guifont="Inconsolata-g for Powerline:g12"
+colorscheme solarized8
 
 " ignore list
 set wildignore=*.o,*~,*.pyc
 
 " key bindings
+" Switch between absolute and relative line number
+" nnoremap <F3> :NumbersToggle<CR>
+" fzf
+nnoremap <silent> <C-p> :Files<CR>
 " choosewin
 nmap - <Plug>(choosewin)
-"jsctags shortcut key
-nnoremap <leader>jt :! find . -type f -iregex \".*\.js$\" -not -path \"./node_modules/*\" -exec jsctags {} -f \; \| sed '/^$/d' \| sort > tags<CR>
 " switch window
 nmap <C-w><C-j> <C-w><C-w>
-" tagbar
-nmap <F8> :TagbarToggle<CR>
+"nmap <F8> :TagbarToggle<CR> " tagbar
 " search current word
 nnoremap <Leader>s :%s/\<<C-r><-C-w>\>/
-" search current word
-nnoremap <Leader>ag :Ag -inr '<C-r><-C-w>'<CR>
-" remap terminal keys
-tnoremap <Esc> <C-\><C-n>
-" numbers
-nnoremap <F3> :NumbersToggle<CR>
-" undo tree
-nnoremap <F5> :GundoToggle<CR>
+" search current word in current folder with ag
+nnoremap <Leader>ags :AgGroup <C-r><-C-w> .
+" Open NerdTree
+silent! nmap <C-e> :NERDTreeToggle<CR>
+" LangaugeClient
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> grn :call LanguageClient#textDocument_rename()<CR>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"" remap terminal keys
+"tnoremap <Esc> <C-\><C-n>
+"" numbers
+"nnoremap <F3> :NumbersToggle<CR>
+"" undo tree
+"nnoremap <F5> :GundoToggle<CR>
 " Gstatus toggle
 nmap <F6> :ToggleGStatus<CR>
 " Save file
 nmap <F2> :update<CR>
 vmap <F2> <Esc><F2>gv
 imap <F2> <c-o><F2>
-" delete word in insert mode
-imap <C-w> <C-o>diw
+"" delete word in insert mode
+"imap <C-w> <C-o>diw
 " escape using jj
 imap jj <Esc>
-" jump to tag with ctrl-]
-nnoremap <c-]> g<c-]>
-vnoremap <c-]> g<c-]>
-nnoremap g<c-]> <c-]>
-vnoremap g<c-]> <c-]>
+"" jump to tag with ctrl-]
+"nnoremap <c-]> g<c-]>
+"vnoremap <c-]> g<c-]>
+"nnoremap g<c-]> <c-]>
+"vnoremap g<c-]> <c-]>
+"
+"nnoremap <leader>gr :Ggr <cword><CR>
+"nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-nnoremap <leader>gr :Ggr <cword><CR>
-nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-autocmd FileType javascript nnoremap <leader>d :TernDef<CR>
+"" Moving lines up and down with Alt-j and Alt-k
+"" http://vim.wikia.com/wiki/Moving_lines_up_or_down
+"" for Macs
+"nnoremap ∆ :m .+1<CR>==
+"nnoremap ˚ :m .-2<CR>==
+"inoremap ∆ <Esc>:m .-2<CR>==gi
+"inoremap ˚ <Esc>:m .+1<CR>==gi
+"vnoremap ∆ :m '<-2<CR>gv=gv
+"vnoremap ˚ :m '>+1<CR>gv=gv
+"" for Win/Linux
+"nnoremap <A-j> :m .+1<CR>==
+"nnoremap <A-k> :m .-2<CR>==
+"inoremap <A-j> <Esc>:m .+1<CR>==gi
+"inoremap <A-k> <Esc>:m .-2<CR>==gi
+"vnoremap <A-j> :m '>+1<CR>gv=gv
+"vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Moving lines up and down with Alt-j and Alt-k
-" http://vim.wikia.com/wiki/Moving_lines_up_or_down
-" for Macs
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .-2<CR>==gi
-inoremap ˚ <Esc>:m .+1<CR>==gi
-vnoremap ∆ :m '<-2<CR>gv=gv
-vnoremap ˚ :m '>+1<CR>gv=gv
-" for Win/Linux
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-" }
+" }} Configuration
 
-" Plugin Settings {
+" PluginSettings {{
+
+let g:deoplete#enable_at_startup = 1 " deoplete autostart
+let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'nerdtree'] " numbers
+let g:choosewin_overlay_enable = 1 " choosewin
+let g:fzf_nvim_statusline = 0 " disable fzf statusline overwriting
+let g:terraform_align=1 "Allow vim-terraform to override your .vimrc indentation syntax
+" restore_view.vim
+set viewoptions=cursor,folds,slash,unix
+let g:skipview_files = ['*\.vim']
+
 " Airline {
-let g:airline_theme = 'kalisi'
-"let g:airline_theme = 'solarized'
-let g:airline_powerline_fonts = 1
-let airline#extensions#default#section_use_groupitems = 0
+set laststatus=2 " always show statusline
+let g:airline_powerline_fonts = 1 " use powerline font
+" Automatically displays all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"let g:airline#extensions#tabline#right_sep = ' '
-"let g:airline#extensions#tabline#right_alt_sep = '|'
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = '|'
-"let g:airline_right_sep = ' '
-"let g:airline_right_alt_sep = '|'
+let g:airline_theme='papercolor'
 " }
 
-" ag search {
-"let g:ag_prg="ag --vimgrep --exclude=\*.min.js"
+"{
+" Language client-neovim
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'html': ['/Users/zhe/.nvm/versions/node/v8.10.0/bin/html-languageserver', '--stdio'],
+    \ 'javascript': ['/Users/zhe/.nvm/versions/node/v8.10.0/bin/javascript-typescript-stdio'],
+    \ 'scala': ['/Users/zhe/code/minatjanster/into/scalameta_lsp'],
+    \ 'scss': ['/Users/zhe/.nvm/versions/node/v8.10.0/bin/css-languageserver', '--stdio']
+    \ }
+
+let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
+"}
+
+"  search {
+let g:ag_prg=" --vimgrep --exclude=\*.min.js" "ag search exclude files
 " }
 
-" angular settings {
-let g:angular_filename_convention = 'camelcased'
-" }
-" choosewin {
-let g:choosewin_overlay_enable = 1
-" }
-"
-" javscript-libraries-syntax {
-let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter,requirejs'
-" }
-"
-"
-" neomake {
-autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/write file
-" }
-"
-" CtrlP {
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_cmd = 'CtrlP' " use CtrlP default mode
-let g:ctrlp_show_hidden = 1 " show hidden files
-nnoremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/](node_modules|artifact)$',
-  \ 'file': '\.png$',
-  \ }
-" }
-" syntastic {
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"}} PluginSettings
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ignore_files = ['\.py$']
-"for AngularJS
-let g:syntastic_html_tidy_ignore_errors=[
-  \"proprietary attribute",
-  \"trimming empty <",
-  \"unescaped &",
-  \"lacks \"action",
-  \"is not recognized!",
-  \"discarding unexpected"]
-" Disable inherited syntastic https://robots.thoughtbot.com/my-life-with-neovim
-let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": [],
-  \ "passive_filetypes": [] }
-" }
-" neomake {
-let g:neomake_serialize = 1
-let g:neomake_serialize_aboetrt_on_error = 1
-" }
+"" javscript-libraries-syntax {
+"let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter,requirejs'
+"" }
+""
+""
+"" neomake {
+"autocmd! BufWritePost, BufReadPre,FileReadPre * Neomake "run Neomake when open/write file
+"" }
+""
+"" syntastic {
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 "
-" Undo tree {
-let g:gundo_right = 1
-" }
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_ignore_files = ['\.py$']
+""for AngularJS
+"let g:syntastic_html_tidy_ignore_errors=[
+"  \"proprietary attribute",
+"  \"trimming empty <",
+"  \"unescaped &",
+"  \"lacks \"action",
+"  \"is not recognized!",
+"  \"discarding unexpected"]
+"" Disable inherited syntastic https://robots.thoughtbot.com/my-life-with-neovim
+"let g:syntastic_mode_map = {
+"  \ "mode": "passive",
+"  \ "active_filetypes": [],
+"  \ "passive_filetypes": [] }
+"" }
+"" neomake {
+"let g:neomake_serialize = 1
+"let g:neomake_serialize_aboetrt_on_error = 1
+"" }
+""
+"" Undo tree {
+"let g:gundo_right = 1
+"" }
+""
+"" UltiSnips {
+"let g:UltiSnipsExpandTrigger="<C-l>"
+"let g:UltiSnipsJumpForwardTrigger="<C-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+"let g:UltiSnipsSnippetDirectories=['UltiSnips']
 "
-" UltiSnips {
-let g:UltiSnipsExpandTrigger="<C-l>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
-let g:UltiSnipsSnippetDirectories=['UltiSnips']
-
-" }
+"" }
 " Nerdtree {
-silent! nmap <C-e> :NERDTreeToggle<CR> " nerdtree hotkeys
 let g:NERDTreeWinSize = 40 "nerdtree window width
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeShowHidden=1
 let g:NERDTreeUpdateOnWrite = 0 " issue: https://github.com/Xuyuanp/nerdtree-git-plugin/issues/4
-"let NERDTreeQuitOnOpen=1 "auto close nerdtree
+let NERDTreeQuitOnOpen=1 "auto close nerdtree
 " }
-" numbers {
-let g:numbers_exclude = ['unite', 'tagbar', 'startify', 'gundo', 'vimshell', 'w3m', 'nerdtree']
-" }
-" pymode settings
-let g:pymode_options_max_line_length = 100
-let g:pymode_lint_options_pep8 = {'max_line_length': g:pymode_options_max_line_length}
-"turn off pymode doc
-"let g:pymode_doc = 0
-set completeopt=menu
-let g:pymode_rope = 1
-let g:pymode_rope_completion = 0
-let g:pymode_rope_rename_bind='<C-c>rr' " refactor: rename
-let g:pymode_rope_move='<C-c>rv' " refactor: move class/function
-"let g:pymode_folding = 0
-"let g:pymode_lint_on_write = 0
-" }
-" tagbar {
-let g:tagbar_width=40
-let g:tagbar_autoclose=0
-" }
-" YouCompleteMe {
-let g:ycm_key_list_select_completion = ['<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-k>']
-let g:ycm_autoclose_preview_window_after_completion=1
 
-" Repeat mapped key commands
-silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
-" }
-" }
+"" tagbar {
+"let g:tagbar_width=40
+"let g:tagbar_autoclose=0
+"" }
+"" YouCompleteMe {
+"let g:ycm_key_list_select_completion = ['<C-j>']
+"let g:ycm_key_list_previous_completion = ['<C-k>']
+"let g:ycm_autoclose_preview_window_after_completion=1
+"
+"" Repeat mapped key commands
+"silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+"" }
+
+"" }
 
 " Helper Commands/Functions {
-command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
-" remove trailing whitespace
-command! ClearQuickfixList cexpr []
 
+"command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+"" remove trailing whitespace
+"command! ClearQuickfixList cexpr []
+"
 function! ToggleGStatus()
     if buflisted(bufname('.git/index'))
         bd .git/index
@@ -395,14 +376,14 @@ function! ToggleGStatus()
         Gstatus
     endif
 endfunction
-command ToggleGStatus :call ToggleGStatus()
+command! ToggleGStatus :call ToggleGStatus()
 
-fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
+"fun! <SID>StripTrailingWhitespaces()
+"    let l = line(".")
+"    let c = col(".")
+"    %s/\s\+$//e
+"    call cursor(l, c)
+"endfun
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
@@ -418,28 +399,12 @@ endfunction
 
 augroup vimrc_autocmd
   autocmd!
-  " auto remove trailling whitespace on save
-  autocmd filetype html,c,cpp,java,php,ruby,python,php,vimrc,javascript autocmd bufwritepre <buffer> :call <sid>StripTrailingWhitespaces()
+"  " auto remove trailling whitespace on save
+"  autocmd filetype html,c,cpp,java,php,ruby,python,php,vimrc,javascript autocmd bufwritepre <buffer> :call <sid>StripTrailingWhitespaces()
   " auto close when only nerdtree is left
   autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 augroup end
 
-" cursor lines
-"au WinLeave * set nocursorline nocursorcolumn
-"au WinEnter * set cursorline cursorcolumn
-augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline cursorcolumn
-    au WinLeave * setlocal nocursorline nocursorcolumn
-augroup END
-set cursorline cursorcolumn
+" } Helper Commands/Functions
 
-""highlight trailing whitespace
-:hi ExtraWhitespace ctermbg=red guibg=red
-call matchadd('ExtraWhitespace', '\s\+$', 11)
-
-" }
-" abbreviation use 'abbv'<space> to trigger {
-iab ipdb import ipdb; ipdb.set_trace()
-" }
-" vim: noai:ts=4:sw=4
+"vim: noai:ts=4:sw=4
