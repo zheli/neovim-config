@@ -9,6 +9,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 " Async completion framework
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'jamessan/vim-gnupg' " PGP file
 
 " Fuzzy - file opener
 Plug '/usr/local/opt/fzf'
@@ -37,6 +38,7 @@ Plug 'https://github.com/godlygeek/tabular.git' " Table Formatting
 Plug 'https://github.com/tpope/vim-obsession.git' " save sessions
 Plug 'https://github.com/szw/vim-tags.git' "Tags
 Plug 'majutsushi/tagbar' " Tagbar
+Plug 'christianrondeau/vim-base64' " encode/decode base64 string
 
 ""  YouCompleteMe
 "Plug 'Valloric/YouCompleteMe'
@@ -122,6 +124,8 @@ set softtabstop=4 " fill in the indentation gaps with 4 spaces
 set tabstop=4 " show existing tab with 4 spaces width
 set wildmenu " show autocomplete options
 set wildmode=longest,list,full " set <tab> completion behavior
+set updatetime=100 " set refresh interval to 100ms
+set smarttab "???
 
 "plugins and indentation for different filetype
 filetype plugin indent on
