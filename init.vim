@@ -68,8 +68,8 @@ Plug 'vim-airline/vim-airline-themes'
 " Colors
 Plug 'lifepillar/vim-solarized8'
 Plug 'adlawson/vim-sorcerer'
-Plug 'https://github.com/freeo/vim-kalisi.git'
-Plug 'https://github.com/scwood/vim-hybrid.git'
+Plug 'freeo/vim-kalisi'
+Plug 'scwood/vim-hybrid'
 
 "" numbers.vim is a plugin for intelligently toggling line numbers
 "Plug 'myusuf3/numbers.vim'
@@ -346,7 +346,7 @@ let g:ag_prg=" --vimgrep --exclude=\*.min.js" "ag search exclude files
 "" }
 " Nerdtree {
 let g:NERDTreeWinSize = 40 "nerdtree window width
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '.DS_Store']
 let NERDTreeShowHidden=1
 let g:NERDTreeUpdateOnWrite = 0 " issue: https://github.com/Xuyuanp/nerdtree-git-plugin/issues/4
 let NERDTreeQuitOnOpen=1 "auto close nerdtree
