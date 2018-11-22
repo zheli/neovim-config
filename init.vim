@@ -90,16 +90,17 @@ Plug 't9md/vim-choosewin'
 "Plug 'https://github.com/zheli/JavaScript-Indent.git' " better indentation
 "Plug 'https://github.com/ternjs/tern_for_vim.git' " don't forget to run npm install inside plugged folder
 "Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git' " syntax for js libs
-"" HTML
-"Plug 'othree/html5.vim'
-"" Python
-"Plug 'https://github.com/klen/python-mode.git', {'branch': 'develop'}
-""  SaltStack
-"Plug 'https://github.com/saltstack/salt-vim.git'
+Plug 'othree/html5.vim' " HTML
+Plug 'tomlion/vim-solidity'
+Plug 'https://github.com/saltstack/salt-vim.git' "SaltStack
+Plug 'GEverding/vim-hocon' "Akka config
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
 Plug 'avakhov/vim-yaml' "  YAML
 Plug 'https://github.com/ryanoasis/vim-devicons.git' " devicons (must be the last one)
+" For Elixir
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-editors/vim-elixir'
 " }
 call plug#end()
 
