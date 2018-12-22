@@ -226,6 +226,8 @@ imap <F2> <c-o><F2>
 "imap <C-w> <C-o>diw
 " escape using jj
 imap jj <Esc>
+"search & replace selected text https://stackoverflow.com/questions/676600/vim-search-and-replace-selected-text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 "" jump to tag with ctrl-]
 "nnoremap <c-]> g<c-]>
 "vnoremap <c-]> g<c-]>
@@ -370,6 +372,7 @@ let NERDTreeQuitOnOpen=1 "auto close nerdtree
 
 " Helper Commands/Functions {
 
+command InsertTimestamp execute 'r! date +"\%Y-\%m-\%d \%H:\%M:\%S +0200"' "Insert current timestamp
 "command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 "" remove trailing whitespace
 "command! ClearQuickfixList cexpr []
